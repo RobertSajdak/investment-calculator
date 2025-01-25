@@ -19,7 +19,7 @@ function App() {
 		setUserInput(prevUserInput => {
 			return {
 				...prevUserInput,
-				[inputIdentifier]: newValue,
+				[inputIdentifier]: +newValue, // + wymusza tutaj konwersję String'a na typ number
 			};
 		});
 	}
