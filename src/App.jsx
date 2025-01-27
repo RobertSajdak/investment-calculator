@@ -13,6 +13,8 @@ function App() {
 		duration: 10,
 	});
 
+	const inputIsValid = userInput.duration >= 1;
+
 	// Funkcja do obsługi danych wejściowych (pól <input>), których wartość zmienił użytkownik.
 	// Funkcja aktualizuje stan pól po każdej zmianie wartości.
 	function handleChange(inputIdentifier, newValue) {
@@ -28,7 +30,14 @@ function App() {
 		<>
 			<Header />
 			<UserInput userInput={userInput} onChange={handleChange} />
-			<Results input={userInput} />
+			{!inputIsValid && (
+				<p className="center">
+					<b>Warnning!</b>
+					<br />
+					The value of the duration field must be greater than zero.
+				</p>
+			)}
+			{inputIsValid && <Results input={userInput} />}
 		</>
 	);
 }
